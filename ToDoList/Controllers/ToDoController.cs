@@ -19,6 +19,7 @@ namespace ToDoList.Controllers
         {
             this.context = context;
         }
+
         // GET: /<controller>/
         public async Task<ActionResult> Index()
         {
@@ -29,5 +30,8 @@ namespace ToDoList.Controllers
             return View(todoList);
 
         }
+
+        // GET /todo/create
+        public IActionResult Create() => View();
     }
 }
