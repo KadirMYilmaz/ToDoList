@@ -1,0 +1,42 @@
+﻿<Properties StartupConfiguration="{ACBC5EB2-36FC-4730-9C2F-94B7FA308AA6}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="ToDoList/Views/ToDo/Edit.cshtml">
+    <Files>
+      <File FileName="ToDoList/Controllers/ToDoController.cs" Line="57" Column="45" />
+      <File FileName="ToDoList/Views/ToDo/Create.cshtml" Line="27" Column="38" />
+      <File FileName="ToDoList/Views/ToDo/Index.cshtml" />
+      <File FileName="ToDoList/Views/_ViewImports.cshtml" />
+      <File FileName="ToDoList/Views/_ViewStart.cshtml" />
+      <File FileName="ToDoList/Views/Shared/_ValidationScriptsPartial.cshtml" />
+      <File FileName="ToDoList/Views/Shared/_Layout.cshtml" />
+      <File FileName="ToDoList/Models/TodoList.cs" />
+      <File FileName="ToDoList/Data/ToDoContext.cs" Line="1" Column="1" />
+      <File FileName="ToDoList/Views/ToDo/Edit.cshtml" Line="2" Column="5" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="ToDoList" expanded="True">
+            <Node name="ToDoList" expanded="True">
+              <Node name="Controllers" expanded="True" />
+              <Node name="Data" expanded="True" />
+              <Node name="Models" expanded="True" />
+              <Node name="Views" expanded="True">
+                <Node name="Shared" expanded="True" />
+                <Node name="ToDo" expanded="True">
+                  <Node name="Edit.cshtml" selected="True" />
+                </Node>
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.ToDoList PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
