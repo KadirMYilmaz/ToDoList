@@ -4,49 +4,43 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using ToDoList.Interface;
 using ToDoList.Models;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace ToDoList.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class ToDoController : Controller
     {
-        // Database dependency
-        private readonly ToDoContext context;
+        private readonly IToDoRepository _repo;
 
-        public ToDoController(ToDoContext context)
+        public ToDoController(IToDoRepository repo)
         {
-            this.context = context;
+            _repo = repo;
         }
 
         // GET: /<controller>/
         public async Task<ActionResult> Index()
         {
-            IQueryable<TodoList> items = from i in context.ToDoList orderby i.Id select i;
+            var items = _repo.Get();
 
-            List<TodoList> todoList = await items.ToListAsync();
-
-            return View(todoList);
-
+            return View(items);
         }
         
         // GET /todo/create
-        public IActionResult Create() => View();
+        public IActionResult Post() => View();
 
         // POST /todo/create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create(TodoList item)
+        public async Task<ActionResult> Post(TodoList item)
         {
             if (ModelState.IsValid)
             {
-                context.Add(item);
-                await context.SaveChangesAsync();
-
-                TempData["Success"] = "The item has been added!";
-
-                return RedirectToAction("Index");
+                await _repo.Post(item);
             }
 
             return View(item);
@@ -54,10 +48,11 @@ namespace ToDoList.Controllers
         }
 
         // GET /todo/edit/5
-        public async Task<ActionResult> Edit(int id)
+        public async Task<ActionResult> Update(int id)
         {
             // Receiving the specific item
-            TodoList item = await context.ToDoList.FindAsync(id);
+            TodoList item = await _repo.GetById(id);
+
             if (item == null)
             {
                 return NotFound();
@@ -67,15 +62,14 @@ namespace ToDoList.Controllers
 
         }
 
-        // POST /todo/edit/5
-        [HttpPost]
+        // PUT /todo/edit/5
+        [HttpPut]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit(TodoList item)
+        public async Task<ActionResult> Update(TodoList item)
         {
             if (ModelState.IsValid)
             {
-                context.Update(item);
-                await context.SaveChangesAsync();
+                await _repo.Update(item);
 
                 TempData["Success"] = "The item has been updated!";
 
@@ -90,16 +84,14 @@ namespace ToDoList.Controllers
         public async Task<ActionResult> Delete(int id)
         {
             // Receiving the specific item
-            TodoList item = await context.ToDoList.FindAsync(id);
+            TodoList item = await _repo.Delete(id);
+
             if (item == null)
             {
                 TempData["Error"] = "The item does not exist!";
             }
             else
             {
-                context.ToDoList.Remove(item);
-                await context.SaveChangesAsync();
-
                 TempData["Success"] = "The item has been deleted!";
             }
 

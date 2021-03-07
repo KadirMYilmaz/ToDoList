@@ -5,7 +5,7 @@
 }
 
 <p>
-    <a asp-action="Create">Create New ToDo Item</a>
+    <a asp-action="Post">Create New ToDo Item</a>
 </p>
 <table class="table">
     <thead>
@@ -23,7 +23,7 @@
                     @item.Content
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                    <a asp-action="Update" asp-route-id="@item.Id">Update</a>
                     <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                 </td>
             </tr>

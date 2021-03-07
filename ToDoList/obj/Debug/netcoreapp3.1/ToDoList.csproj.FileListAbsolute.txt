@@ -169,3 +169,4 @@
 /Users/kadiryilmaz/Projects/ToDoList/ToDoList/obj/Debug/netcoreapp3.1/ToDoList.dll
 /Users/kadiryilmaz/Projects/ToDoList/ToDoList/obj/Debug/netcoreapp3.1/ToDoList.pdb
 /Users/kadiryilmaz/Projects/ToDoList/ToDoList/obj/Debug/netcoreapp3.1/ToDoList.genruntimeconfig.cache
+/Users/kadiryilmaz/Projects/ToDoList/ToDoList/obj/Debug/netcoreapp3.1/ToDoList.csprojAssemblyReference.cache
