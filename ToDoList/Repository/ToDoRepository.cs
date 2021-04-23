@@ -51,17 +51,7 @@ namespace ToDoList.Repository
 
         public async Task<TodoList> Delete(int id)
         {
-            if (id == null)
-            {
-                throw new ArgumentNullException(nameof(id));
-            }
-
             TodoList item = await _context.ToDoList.Where(t => t.Id == id).FirstOrDefaultAsync();
-
-            if (item == null)
-            {
-                throw new ArgumentNullException(nameof(item));
-            }
 
             _context.ToDoList.Remove(item);
             await _context.SaveChangesAsync();

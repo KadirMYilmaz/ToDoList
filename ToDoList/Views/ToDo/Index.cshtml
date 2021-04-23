@@ -5,22 +5,30 @@
 }
 
 <p>
-    <a asp-action="Post">Create New ToDo Item</a>
+    <a asp-action="Post">Create a new task</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                Content
+                Description
             </th>
-            <th></th>
+            <th>
+                Status
+            </th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model) {
             <tr>
                 <td>
-                    @item.Content
+                    @item.Description
+                </td>
+                <td>
+                    <form asp-action="MarkDone" method="post">
+                        <input type="checkbox" class="done-checkbox" />
+                        <input type="hidden" name="id" value="@item.Id" />
+                    </form>
                 </td>
                 <td>
                     <a asp-action="Update" asp-route-id="@item.Id">Update</a>

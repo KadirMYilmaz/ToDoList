@@ -1,12 +1,17 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace ToDoList.Models
 {
-    public class TodoList
+    public partial class TodoList
     {
         public int Id { get; set; }
+
         [Required]
-        public string Content { get; set; }
+        [StringLength(500)]
+        public string Description { get; set; }
+
+        public bool IsComplete { get; set; }
     }
 }

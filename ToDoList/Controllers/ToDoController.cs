@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using ToDoList.Interface;
 using ToDoList.Models;
 
@@ -11,8 +7,7 @@ using ToDoList.Models;
 
 namespace ToDoList.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
+    [Controller]
     public class ToDoController : Controller
     {
         private readonly IToDoRepository _repo;
@@ -25,7 +20,7 @@ namespace ToDoList.Controllers
         // GET: /<controller>/
         public async Task<ActionResult> Index()
         {
-            var items = _repo.Get();
+            var items = await _repo.Get();
 
             return View(items);
         }
