@@ -12,5 +12,15 @@ namespace ToDoList
         }
 
         public DbSet<TodoList> ToDoList { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder
+                .Entity<TodoList>()
+                .Property(p => p.Priority)
+                .HasConversion(
+                v => v.ToString(),
+                v => (PriorityLevel)Enum.Parse(typeof(PriorityLevel), v));
+        }
     }
 }

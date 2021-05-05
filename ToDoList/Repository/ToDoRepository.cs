@@ -27,13 +27,13 @@ namespace ToDoList.Repository
             return await _context.ToDoList.Where(t => t.Id == id).FirstOrDefaultAsync();
         }
 
+        public async Task<TodoList> Details(int? id)
+        {
+            return await _context.ToDoList.Where(i => i.Id == id).FirstOrDefaultAsync();
+        }
+
         public async Task Post(TodoList todoList)
         {
-            if (todoList == null)
-            {
-                throw new ArgumentNullException(nameof(todoList));
-            }
-
             await _context.ToDoList.AddAsync(todoList);
             await _context.SaveChangesAsync();
         }

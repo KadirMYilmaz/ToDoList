@@ -157,6 +157,7 @@
 /Users/kadiryilmaz/Projects/ToDoList/ToDoList/obj/Debug/netcoreapp3.1/Razor/Pages/_ValidationScriptsPartial.cshtml.g.cs
 /Users/kadiryilmaz/Projects/ToDoList/ToDoList/obj/Debug/netcoreapp3.1/Razor/Views/Shared/_Layout.cshtml.g.cs
 /Users/kadiryilmaz/Projects/ToDoList/ToDoList/obj/Debug/netcoreapp3.1/Razor/Views/Shared/_ValidationScriptsPartial.cshtml.g.cs
+/Users/kadiryilmaz/Projects/ToDoList/ToDoList/obj/Debug/netcoreapp3.1/Razor/Views/ToDo/Details.cshtml.g.cs
 /Users/kadiryilmaz/Projects/ToDoList/ToDoList/obj/Debug/netcoreapp3.1/Razor/Views/ToDo/Index.cshtml.g.cs
 /Users/kadiryilmaz/Projects/ToDoList/ToDoList/obj/Debug/netcoreapp3.1/Razor/Views/ToDo/Post.cshtml.g.cs
 /Users/kadiryilmaz/Projects/ToDoList/ToDoList/obj/Debug/netcoreapp3.1/Razor/Views/ToDo/Update.cshtml.g.cs

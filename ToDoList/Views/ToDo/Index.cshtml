@@ -11,10 +11,10 @@
     <thead>
         <tr>
             <th>
-                Description
+                Name
             </th>
             <th>
-                Status
+                Done
             </th>
         </tr>
     </thead>
@@ -22,7 +22,7 @@
         @foreach (var item in Model) {
             <tr>
                 <td>
-                    @item.Description
+                    @item.Name
                 </td>
                 <td>
                     <form asp-action="MarkDone" method="post">
@@ -31,6 +31,7 @@
                     </form>
                 </td>
                 <td>
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a>
                     <a asp-action="Update" asp-route-id="@item.Id">Update</a>
                     <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                 </td>

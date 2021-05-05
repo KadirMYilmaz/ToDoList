@@ -1,5 +1,7 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using ToDoList.Interface;
 using ToDoList.Models;
 
@@ -18,11 +20,28 @@ namespace ToDoList.Controllers
         }
 
         // GET: /<controller>/
-        public async Task<ActionResult> Index()
+        public async Task<IActionResult> Index()
         {
             var items = await _repo.Get();
 
             return View(items);
+        }
+
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var info = await _repo.Details(id);
+
+            if (info == null)
+            {
+                return NotFound();
+            }
+
+            return View(info);
         }
         
         // GET /todo/create
@@ -31,19 +50,31 @@ namespace ToDoList.Controllers
         // POST /todo/create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Post(TodoList item)
+        public async Task<IActionResult> Post(
+            [Bind("Name,Priority")] TodoList item)
         {
-            if (ModelState.IsValid)
+            try
             {
-                await _repo.Post(item);
+                if (ModelState.IsValid)
+                {
+                    await _repo.Post(item);
+
+                    if (item == null)
+                    {
+                        throw new ArgumentNullException(nameof(item));
+                    }
+                }
             }
-
+            catch (DbUpdateException ex)
+            {
+                ModelState.AddModelError("", "Unable to save changes. " + ex);
+            }
+            
             return View(item);
-
         }
 
         // GET /todo/edit/5
-        public async Task<ActionResult> Update(int id)
+        public async Task<IActionResult> Update(int id)
         {
             // Receiving the specific item
             TodoList item = await _repo.GetById(id);
@@ -60,7 +91,7 @@ namespace ToDoList.Controllers
         // PUT /todo/edit/5
         [HttpPut]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Update(TodoList item)
+        public async Task<IActionResult> Update(TodoList item)
         {
             if (ModelState.IsValid)
             {
@@ -70,13 +101,11 @@ namespace ToDoList.Controllers
 
                 return RedirectToAction("Index");
             }
-
             return View(item);
-
         }
 
         // GET /todo/delete/5
-        public async Task<ActionResult> Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
             // Receiving the specific item
             TodoList item = await _repo.Delete(id);

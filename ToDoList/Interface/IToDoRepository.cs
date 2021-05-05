@@ -9,6 +9,7 @@ namespace ToDoList.Interface
     {
         Task<IEnumerable<TodoList>> Get();
         Task<TodoList> GetById(int id);
+        Task<TodoList> Details(int? id);
         Task Post(TodoList todoList);
         Task Update(TodoList item);
         Task<TodoList> Delete(int id);
